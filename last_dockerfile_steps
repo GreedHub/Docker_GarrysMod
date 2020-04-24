@@ -1,0 +1,26 @@
+1	55.3 MB	
+ADD file:1256c62f77a54c982fdb2790d682049b2ad64c8466466e846f3d33ad1ed4035d in /
+2	0 B	
+CMD ["bash"]
+3	0 B	
+ENV port=27015
+4	0 B	
+ENV gamemode=terrortown
+5	0 B	
+ENV maxplayers=32
+6	0 B	
+ENV map=gm_flatgrass
+7	49 MB	
+RUN apt update && apt -y install lib32stdc++6 lib32tinfo5 curl
+8	755 B	
+COPY file:261511a1538ca3b9d03805f53a040ff8038504fdd1f9e02d13ab879b462c7bcd in /
+9	755 B	
+RUN chmod +x ./run_gmod.sh
+10	0 B	
+EXPOSE 27015:27015/tcp 27015:27015/udp
+11	0 B	
+VOLUME [/steam/gmod/garrysmod/data/ /steam/gmod/garrysmod/cache/srcds/]
+12	0 B	
+WORKDIR /
+13	0 B	
+ENTRYPOINT ["./run_gmod.sh"]
